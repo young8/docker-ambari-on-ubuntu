@@ -1,0 +1,20 @@
+hadoop:
+    image: ubuntu:14.04
+    container_name: hadoop
+    hostname: "hadoop.docker.com"
+    command: "tail -f /dev/null"
+    ports:
+     - 50070:50070
+     - 60010:60010
+     - 60020:60020
+     - 60030:60030
+
+ambari:
+    build: ./ambari-server
+    container_name: ambari
+    hostname: "ambari.docker.com"
+    command: "tail -f /dev/null"
+    ports:
+     - 8080:8080
+    links:
+     - hadoop:HADOOP
